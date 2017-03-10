@@ -18,11 +18,11 @@ public class BusinessService {
 	}
 
 	public static void main(String[] args) {
-		Enhancer enhancer = new Enhancer();
-		enhancer.setSuperclass(BusinessService.class);
-		enhancer.setCallback(new AceBusinessServiceHandler());
+		Enhancer enhancer = new Enhancer();//创建一个织入器
+		enhancer.setSuperclass(BusinessService.class);//注入父类
+		enhancer.setCallback(new AceBusinessServiceHandler());//注入切面
 
-		BusinessService service = (BusinessService) enhancer.create();
+		BusinessService service = (BusinessService) enhancer.create();//生成注入切面后代理对象
 		service.doBusiness();
 		service.doTest();
 	}
